@@ -123,7 +123,7 @@ const ContactsList: React.FC<ContactsListProps> = ({ onSelectContact }) => {
       <Card className="p-4">
         <div className="animate-pulse space-y-3">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-16 bg-slate-200 rounded"></div>
+            <div key={i} className="h-16 bg-muted rounded"></div>
           ))}
         </div>
       </Card>
@@ -145,7 +145,7 @@ const ContactsList: React.FC<ContactsListProps> = ({ onSelectContact }) => {
       </div>
 
       {showAddForm && (
-        <div className="space-y-3 p-3 bg-slate-50 rounded-lg">
+        <div className="space-y-3 p-3 bg-muted rounded-lg">
           <Input
             placeholder="Contact name"
             value={newContactName}
@@ -172,7 +172,7 @@ const ContactsList: React.FC<ContactsListProps> = ({ onSelectContact }) => {
       )}
 
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
           placeholder="Search contacts..."
           value={searchTerm}
@@ -185,14 +185,14 @@ const ContactsList: React.FC<ContactsListProps> = ({ onSelectContact }) => {
         {filteredContacts.map((contact) => (
           <div
             key={contact.id}
-            className="flex items-center justify-between p-3 border rounded-lg hover:bg-slate-50 cursor-pointer"
+            className="flex items-center justify-between p-3 border border-border rounded-lg hover:bg-muted/50 cursor-pointer transition-colors duration-200"
             onClick={() => contact.has_app && onSelectContact(contact)}
           >
             <div className="flex-1">
               <div className="flex items-center space-x-2">
-                <h4 className="font-medium">{contact.contact_name}</h4>
+                <h4 className="font-medium text-foreground">{contact.contact_name}</h4>
                 {contact.has_app ? (
-                  <Badge variant="default" className="bg-green-100 text-green-800">
+                  <Badge variant="default" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                     Available to Whisper
                   </Badge>
                 ) : (
@@ -201,7 +201,7 @@ const ContactsList: React.FC<ContactsListProps> = ({ onSelectContact }) => {
                   </Badge>
                 )}
               </div>
-              <p className="text-sm text-slate-600 flex items-center">
+              <p className="text-sm text-muted-foreground flex items-center">
                 <Phone className="h-3 w-3 mr-1" />
                 {contact.contact_phone}
               </p>
@@ -229,7 +229,7 @@ const ContactsList: React.FC<ContactsListProps> = ({ onSelectContact }) => {
         ))}
 
         {filteredContacts.length === 0 && (
-          <div className="text-center py-8 text-slate-500">
+          <div className="text-center py-8 text-muted-foreground">
             <UserPlus className="h-12 w-12 mx-auto mb-3 opacity-50" />
             <p>No contacts found</p>
             <p className="text-sm">Add contacts to start whispering!</p>
